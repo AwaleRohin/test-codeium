@@ -1,0 +1,35 @@
+# Byte-compiled Python files
+*.pyc
+__pycache__/
+
+# Cached Python bytecode
+*.pyo
+
+# Environment-specific settings
+.env
+
+# Django
+*.log
+*.pot
+*.pyc
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff: instrumentation, profiling, testing
+*.prof
+.coverage
+.eggs
+lib/
+.tox/
+
+# Virtual environment
+venv/
+
+# Mac OS X
+.DS_Store
+
+# Emacs
+*.elc
+
+# PyCharm
