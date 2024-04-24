@@ -1,4 +1,4 @@
-from django.test import TestCase, Client as TestClient
+from django.test import Client as TestClient, TestCase
 from django.urls import reverse
 
 from .models import Client
@@ -10,24 +10,24 @@ class AddClientTestCase(TestCase):
 
     def test_add_client(self):
         # Create a POST request with a name parameter
-        response = self.client.post(reverse('add_client'), {'name': 'Test Client'})
+        response = self.client.post(reverse("add_client"), {"name": "Test Client"})
 
         # Assert that the response is a redirect to the client_list page
-        self.assertRedirects(response, reverse('client_list'))
+        self.assertRedirects(response, reverse("client_list"))
 
         # Assert that a new Client object was created with the correct name
-        self.assertTrue(Client.objects.filter(name='Test Client').exists())
+        self.assertTrue(Client.objects.filter(name="Test Client").exists())
 
 
 class ClientListViewTestCase(TestCase):
     def setUp(self):
         self.client = TestClient()
-        self.client1 = Client.objects.create(name='Client 1')
-        self.client2 = Client.objects.create(name='Client 2')
+        self.client1 = Client.objects.create(name="Client 1")
+        self.client2 = Client.objects.create(name="Client 2")
 
     def test_client_list(self):
         # Send a GET request to the client_list URL
-        response = self.client.get(reverse('client_list'))
+        response = self.client.get(reverse("client_list"))
 
         # Assert that the response is a 200 OK
         self.assertEqual(response.status_code, 200)
